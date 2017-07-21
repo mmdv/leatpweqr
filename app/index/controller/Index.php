@@ -1,26 +1,21 @@
 <?php
-
-    namespace app\index\controller;
-
-    class Index
+namespace app\index\controller;
+use think\Config;
+use think\Env;
+class Index
+{
+    public function index()
     {
-        public function index()
-        {
-            echo 'hello word';
-//            获取参数 signature nonce token timestamp
-            $nonce  = $_GET['nonce'];
-            $token = 'findjoy';
-            $timestamp = $_GET['timestamp'];
-            $echostr = $_GET['echostr'];
-            //形成数组,按字典排序
-            $array = array();
-            $array =  array($nonce,$timestamp,$token);
-            sort($array);
-            //拼接成字符串,加密    然后与signature校验
-            $str = sha1( implode($array) );
-            if( $str == $signature ) {
-                echo $echostr;
-                exit;
-            }
-        }
+        // dump($_ENV['email']);  //获取不到系统变量
+        // $res = Env::get('email','def'); //无第一个参数则返回def
+        // dump($res);
+
+        // $res = Env::get('database_username');
+        // $res = Env::get('database.username');  //使用.语法代码可读性更高
+        // dump($res);
+
+        // $res = Env::get('status','prod');
+        dump(config());
     }
+
+}
