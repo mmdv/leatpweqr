@@ -5,7 +5,12 @@
     use think;
     class Qrcode
     {
-        public function qrcode($users_id = 'hell'){
+        public function qrcode(){
+            $openId = $_GET['open'];
+            $nickName = $_GET['nickName'];
+
+            echo $openId;
+//            echo $nickName.'<BR>';
 //            无logo二维码
 //            vendor('phpqrcode.phpqrcode');
 //            //生成二维码图片
@@ -25,7 +30,7 @@
 
 
             //带LOGO             $url = 'http://mydd.0317cn.net/index.php/Home/Logo/res/users_id/'.$users_id;
-            $data = 'hello';
+            $data = $openId.$nickName;
             //二维码内容
             $errorCorrectionLevel = 'M';
             if (isset($_REQUEST['level']) && in_array($_REQUEST['level'], array('L','M','Q','H')))
@@ -40,10 +45,10 @@
             Vendor('phpqrcode.phpqrcode');
             $object = new \QRcode();
 //            ....................................................
-            $path = 'qrcode'.DIRECTORY_SEPARATOR;
+            $path = 'public'.DIRECTORY_SEPARATOR.'qrcode'.DIRECTORY_SEPARATOR;
 //            ...................................................
             $filename = $path.'test.png';
-            echo 'hello'.$filename;
+            echo 'hello'.$filename.'<br>';
             $object->png($data, $filename, $errorCorrectionLevel, $matrixPointSize, 2);
 
             $logo = $path.'00.jpg';
@@ -72,7 +77,7 @@
                 imagecopyresampled($QR, $logo, $from_width, $from_width, 0, 0, $logo_qr_width, $logo_qr_height, $logo_width, $logo_height);
             }
             //输出图片 带logo图片
-            $outputPath = DIRECTORY_SEPARATOR.'qrcode'.DIRECTORY_SEPARATOR;
+            $outputPath = DIRECTORY_SEPARATOR.'public'.DIRECTORY_SEPARATOR.'qrcode'.DIRECTORY_SEPARATOR;
             imagepng($QR, $path.'test.png');
             echo '<img src='.$outputPath.'test.png>';
         }
