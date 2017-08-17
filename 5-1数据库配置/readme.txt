@@ -1,0 +1,2 @@
+index 放在app的controller下
+config放在conf下
