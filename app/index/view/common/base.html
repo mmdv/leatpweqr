@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        {block name="title"}
+            模板学习 tp5
+        {/block}
+    </title>
+    <link rel="stylesheet" href="__CSS__/index.css">
+</head>
+<body>
+<div class="wrap">
+    <!--头部-->
+    <div class="header">
+        header
+        <!--中部-->
+    </div>
+    <div class="main">
+        <!--边栏-->
+        <div class="siderbar">
+            siderbar
+        </div><!--内容
+            --><div class="body">
+            {block name="body"}
+            {/block}
+                 </div>
+    </div>
+    <!--尾部-->
+    <div class="footer">
+        {block name="footer"}
+        footer
+        {/block}
+    </div>
+</div>
+</body>
+</html>
